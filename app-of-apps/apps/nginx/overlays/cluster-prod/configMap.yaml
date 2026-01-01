@@ -1,0 +1,15 @@
+# https://kubernetes.io/docs/concepts/configuration/configmap/
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-html
+  namespace: nginx
+data:
+  index.html: |
+    <html>
+      <body>
+        <h1>Hello from cluster-prod</h1>
+      </body>
+    </html>
+---
+

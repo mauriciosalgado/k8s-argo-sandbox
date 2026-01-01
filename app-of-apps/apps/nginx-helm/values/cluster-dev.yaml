@@ -1,0 +1,3 @@
+releaseName: nginx-helm-dev
+
+replicaCount: 1

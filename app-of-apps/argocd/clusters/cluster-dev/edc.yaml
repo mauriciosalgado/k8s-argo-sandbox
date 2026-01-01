@@ -1,0 +1,41 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: edc-appset
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: git@atc-github.azure.cloud.bmw:Extended-Enterprise-Catena-X/dsf-argo-sandbox.git
+        revision: master
+        files:
+          - path: app-of-apps/apps/edc/cluster-dev/*.yaml
+
+  template:
+    metadata:
+      name: edc-appset-helm-{{path.filename}}
+    spec:
+      project: default
+
+      sources:
+        - repoURL: https://charts.bitnami.com/bitnami
+          chart: nginx
+          targetRevision: 22.3.8
+          helm:
+            releaseName: "{{path.filename}}"
+            valueFiles:
+              - $path/app-of-apps/apps/edc/{{path.basename}}/{{path.filename}}
+        - repoURL: git@atc-github.azure.cloud.bmw:Extended-Enterprise-Catena-X/dsf-argo-sandbox.git
+          targetRevision: master
+          ref: path
+
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: "{{path.basename}}"
+
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
+        automated:
+          prune: true
+          selfHeal: true

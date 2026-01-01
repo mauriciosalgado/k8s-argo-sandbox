@@ -1,0 +1,16 @@
+# https://kubernetes.io/docs/concepts/services-networking/service/
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+  namespace: ngin
+spec:
+  selector:
+    app: nginx
+  type:
+  ports:
+    - name: nginx
+      port: 80
+      targetPort: 80
+---
+

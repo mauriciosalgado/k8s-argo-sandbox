@@ -12,7 +12,7 @@ spec:
       helm:
         valueFiles:
           - $path/app-of-apps/apps/nginx-helm/values/cluster-dev.yaml
-    - repoURL: git@atc-github.azure.cloud.bmw:Extended-Enterprise-Catena-X/dsf-argo-sandbox.git
+    - repoURL: .
       targetRevision: master
       ref: path
   destination:

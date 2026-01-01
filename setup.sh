@@ -43,6 +43,9 @@ for ctx in $CONTEXTS; do
     --for=condition=Available=True \
     --timeout=300s
 
-  echo "Bootstrapping Application"
-  sed "s|<cluster-env>|$ctx|g" "$BOOTSTRAP_TEMPLATE" | kubectl apply -f -
+  #echo "Bootstrapping Application"
+  #sed "s|<cluster-env>|$ctx|g" "$BOOTSTRAP_TEMPLATE" | kubectl apply -f -
+  export REPO_URL=$(git remote get-url origin)
+  export CLUSTER_ENV=$ctx
+  envsubst <app-of-apps/argocd/bootstrap/root-app-template.yaml | kubectl apply -f -
 done

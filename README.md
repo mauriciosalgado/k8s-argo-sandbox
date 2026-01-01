@@ -42,7 +42,7 @@ This repository allows for quick setup of local kubernetes clusters and configur
 
 In order to give ArgoCD access to this repo, you need to:
 
-- configure SSH access to ***atc-github***
+- configure SSH access to this repo
 - create the private key, with the name ***argocd-ssh***, in `~/.ssh`.
 
 > [!NOTE]

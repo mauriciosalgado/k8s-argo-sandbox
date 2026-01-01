@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: git@atc-github.azure.cloud.bmw:Extended-Enterprise-Catena-X/dsf-argo-sandbox.git
+    repoURL: .
     targetRevision: master
     path: app-of-apps/apps/nginx/overlays/cluster-prod
   destination:

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 CONTEXTS=$(cat "contexts.txt")
 REPO_URL="git@atc-github.azure.cloud.bmw:Extended-Enterprise-Catena-X/dsf-argo-sandbox.git"
 BOOTSTRAP_TEMPLATE="app-of-apps/argocd/bootstrap/root-app-template.yaml"
@@ -11,22 +13,21 @@ for ctx in $CONTEXTS; do
 done
 
 for ctx in $CONTEXTS; do
-  kubectl config use-context $ctx
 
   echo "Creating namespace"
-  kubectl create namespace argocd
+  kubectl --context $ctx create namespace argocd --dry-run=client -o yaml | kubectl apply -f -
 
   echo "Installing ArgoCD"
-  kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+  kubectl --context $ctx apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
-  kubectl -n argocd create configmap argocd-ssh-known-hosts-cm \
+  kubectl --context $ctx -n argocd create configmap argocd-ssh-known-hosts-cm \
     --from-literal=ssh_known_hosts="$SSH_KNOWN_HOSTS" \
     --dry-run=client -o yaml | kubectl apply -f -
 
-  kubectl -n argocd rollout restart deployment argocd-repo-server
+  kubectl --context $ctx -n argocd rollout restart deployment argocd-repo-server
 
   echo "Creating Repo Credentials Secret"
-  kubectl create secret generic private-repo \
+  kubectl --context $ctx create secret generic private-repo \
     -n argocd \
     --from-literal=type=git \
     --from-literal=url="$REPO_URL" \
@@ -38,13 +39,12 @@ for ctx in $CONTEXTS; do
     kubectl apply -f -
 
   echo "Waiting for Argo CD to be ready"
-  kubectl wait deployment argocd-server \
+  kubectl --context $ctx wait deployment argocd-server \
     -n argocd \
     --for=condition=Available=True \
     --timeout=300s
 
-  #echo "Bootstrapping Application"
-  #sed "s|<cluster-env>|$ctx|g" "$BOOTSTRAP_TEMPLATE" | kubectl apply -f -
+  echo "Bootstrapping ArgoCD Root Application"
   export REPO_URL=$(git remote get-url origin)
   export CLUSTER_ENV=$ctx
   envsubst <app-of-apps/argocd/bootstrap/root-app-template.yaml | kubectl apply -f -

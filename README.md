@@ -9,6 +9,7 @@ This repository allows for quick setup of local kubernetes clusters and configur
 
 <!-- toc -->
 
+- [Usage](#usage)
 - [Requirements](#requirements)
   * [Packages](#packages)
   * [SSH Key](#ssh-key)
@@ -31,6 +32,21 @@ This repository allows for quick setup of local kubernetes clusters and configur
 - [References](#references)
 
 <!-- tocstop -->
+
+## Usage
+
+This repository is intended to be used as a **template repository**.
+
+1. Click **Use this template**
+2. Create a new private repository
+3. Clone your new repository
+4. Run `./setup.sh`
+
+The setup script will:
+
+- Inject your repository SSH URL
+- Commit the changes
+- Bootstrap ArgoCD
 
 ## Requirements
 

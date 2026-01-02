@@ -168,7 +168,7 @@ Pointing the path to the right overlay, as such:
 
 ```yaml
 source:
-  repoURL: git@atc-github.azure.cloud.bmw:Extended-Enterprise-Catena-X/dsf-argo-sandbox.git
+  repoURL: ${REPO_URL}
   targetRevision: master
   path: app-of-apps/apps/nginx/overlays/cluster-prod
 ```
@@ -207,7 +207,7 @@ sources:
     helm:
       valueFiles:
         - $path/app-of-apps/apps/nginx-helm/values/cluster-prod.yaml
-  - repoURL: git@atc-github.azure.cloud.bmw:Extended-Enterprise-Catena-X/dsf-argo-sandbox.git
+  - repoURL: ${REPO_URL}
     targetRevision: master
     ref: path
 ```
@@ -238,10 +238,10 @@ Let's take the generators section of the ApplicationSet, being deployed in "clus
 ```yaml
 generators:
   - git:
-      repoURL: git@atc-github.azure.cloud.bmw:Extended-Enterprise-Catena-X/dsf-argo-sandbox.git
+      repoURL: ${REPO_URL}
       revision: master
       files:
-        - path: app-of-apps/apps/edc/cluster-prod/*.yaml
+        - path: app-of-apps/apps/edc/cluster-dev/*.yaml
 ```
 
 And then you can use the same logic as for the single helm application, in the sources section of the template:
@@ -256,7 +256,7 @@ template:
         releaseName: "{{path.filename}}"
         valueFiles:
           - $path/app-of-apps/apps/edc/{{path.basename}}/{{path.filename}}
-    - repoURL: git@atc-github.azure.cloud.bmw:Extended-Enterprise-Catena-X/dsf-argo-sandbox.git
+    - repoURL: ${REPO_URL}
       targetRevision: master
       ref: path
 ```

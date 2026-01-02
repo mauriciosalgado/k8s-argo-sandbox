@@ -23,6 +23,7 @@ for ctx in $CONTEXTS; do
 done
 
 for ctx in $CONTEXTS; do
+  kubectl config use-context $ctx
 
   echo "Creating namespace"
   kubectl --context $ctx create namespace argocd --dry-run=client -o yaml | kubectl apply -f -

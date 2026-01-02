@@ -65,6 +65,9 @@ In order to give ArgoCD access to this repo, you need to:
 ## Quick Start
 
 ```sh
+#Customize Manifests
+./setup.sh
+
 # Deploy sandbox
 ./run.sh
 

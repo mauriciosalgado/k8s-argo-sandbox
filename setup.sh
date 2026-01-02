@@ -12,10 +12,6 @@ done
 
 git add app-of-apps
 
-if ! git diff --cached --quiet; then
-  git commit -m "Bootstrap: configure repository URL"
-  git push origin HEAD
-  echo "Changes commited"
-else
-  echo "Repository already personalized"
-fi
+git commit -m "Bootstrap: configure repository URL"
+git push origin HEAD
+echo "Changes commited"

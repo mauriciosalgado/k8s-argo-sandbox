@@ -49,6 +49,7 @@ The setup script will inject the repoURL in the manifests and push the changes t
 ### Packages
 
 - [minikube](https://formulae.brew.sh/formula/minikube)
+- [kubectl-cli](https://formulae.brew.sh/formula/kubernetes-cli)
 
 ### SSH Key
 

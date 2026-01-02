@@ -12,7 +12,7 @@ spec:
       helm:
         valueFiles:
           - $path/app-of-apps/apps/nginx-helm/values/cluster-dev.yaml
-    - repoURL: .
+    - repoURL: ${REPO_URL}
       targetRevision: master
       ref: path
   destination:

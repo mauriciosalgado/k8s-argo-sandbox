@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: .
+    repoURL: ${REPO_URL}
     targetRevision: master
     path: app-of-apps/apps/nginx/overlays/cluster-prod
   destination:

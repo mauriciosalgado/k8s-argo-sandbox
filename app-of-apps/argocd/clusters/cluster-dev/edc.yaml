@@ -6,7 +6,7 @@ metadata:
 spec:
   generators:
     - git:
-        repoURL: git@atc-github.azure.cloud.bmw:Extended-Enterprise-Catena-X/dsf-argo-sandbox.git
+        repoURL: ${REPO_URL}
         revision: master
         files:
           - path: app-of-apps/apps/edc/cluster-dev/*.yaml
@@ -25,7 +25,7 @@ spec:
             releaseName: "{{path.filename}}"
             valueFiles:
               - $path/app-of-apps/apps/edc/{{path.basename}}/{{path.filename}}
-        - repoURL: git@atc-github.azure.cloud.bmw:Extended-Enterprise-Catena-X/dsf-argo-sandbox.git
+        - repoURL: ${REPO_URL}
           targetRevision: master
           ref: path
 

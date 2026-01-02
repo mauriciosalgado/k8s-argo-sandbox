@@ -169,7 +169,7 @@ Pointing the path to the right overlay, as such:
 ```yaml
 source:
   repoURL: ${REPO_URL}
-  targetRevision: master
+  targetRevision: main
   path: app-of-apps/apps/nginx/overlays/cluster-prod
 ```
 
@@ -208,7 +208,7 @@ sources:
       valueFiles:
         - $path/app-of-apps/apps/nginx-helm/values/cluster-prod.yaml
   - repoURL: ${REPO_URL}
-    targetRevision: master
+    targetRevision: main
     ref: path
 ```
 
@@ -239,7 +239,7 @@ Let's take the generators section of the ApplicationSet, being deployed in "clus
 generators:
   - git:
       repoURL: ${REPO_URL}
-      revision: master
+      revision: main
       files:
         - path: app-of-apps/apps/edc/cluster-dev/*.yaml
 ```
@@ -257,7 +257,7 @@ template:
         valueFiles:
           - $path/app-of-apps/apps/edc/{{path.basename}}/{{path.filename}}
     - repoURL: ${REPO_URL}
-      targetRevision: master
+      targetRevision: main
       ref: path
 ```
 

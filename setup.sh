@@ -3,10 +3,36 @@
 set -e
 
 CONTEXTS=$(cat "contexts.txt")
-REPO_URL="git@atc-github.azure.cloud.bmw:Extended-Enterprise-Catena-X/dsf-argo-sandbox.git"
+REPO_URL=$(git remote get-url origin)
+GIT_HOST=$(echo "$REPO_URL" | sed -E 's/.*@([^:]+):.*/\1/')
 BOOTSTRAP_TEMPLATE="app-of-apps/argocd/bootstrap/root-app-template.yaml"
 SSH_KEY="$HOME/.ssh/argocd-ssh"
-SSH_KNOWN_HOSTS=$(ssh-keyscan atc-github.azure.cloud.bmw)
+SSH_KNOWN_HOSTS=$(ssh-keyscan "$GIT_HOST" 2>/dev/null)
+
+# CHECKS
+
+if [[ ! -f "$SSH_KEY" ]]; then
+  echo "SSH key \"argocd-ssh\" not found: $SSH_KEY"
+  exit 1
+fi
+
+# MANIFEST CUSTOMIZATION
+
+find app-of-apps -name "*.yaml" -type f | while read -r file; do
+  sed -i '' "s|\${REPO_URL}|$REPO_URL|g" "$file"
+done
+
+git add app-of-apps
+
+if ! git diff --cached --quiet; then
+  git commit -m "Bootstrap: configure repository URL"
+  git push origin HEAD
+  echo "Changes commited"
+else
+  echo "Repository already personalized"
+fi
+
+# BOOTSTRAPPING
 
 for ctx in $CONTEXTS; do
   minikube --profile $ctx start
@@ -45,7 +71,6 @@ for ctx in $CONTEXTS; do
     --timeout=300s
 
   echo "Bootstrapping ArgoCD Root Application"
-  export REPO_URL=$(git remote get-url origin)
-  export CLUSTER_ENV=$ctx
-  envsubst <app-of-apps/argocd/bootstrap/root-app-template.yaml | kubectl apply -f -
+  CLUSTER_ENV=$ctx
+  envsubst <$BOOTSTRAP_TEMPLATE | kubectl apply -f -
 done

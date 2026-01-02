@@ -14,7 +14,7 @@ This repository allows for quick setup of local kubernetes clusters and configur
   * [Packages](#packages)
   * [SSH Key](#ssh-key)
 - [Quick Start](#quick-start)
-- [Setup](#setup)
+- [Run](#run)
   * [Contexts](#contexts)
   * [Diagram](#diagram)
 - [Access ArgoCD UI](#access-argocd-ui)
@@ -42,11 +42,7 @@ This repository is intended to be used as a **template repository**.
 3. Clone your new repository
 4. Run `./setup.sh`
 
-The setup script will:
-
-- Inject your repository SSH URL
-- Commit the changes
-- Bootstrap ArgoCD
+The setup script will inject the repoURL in the manifests and push the changes to the repo
 
 ## Requirements
 
@@ -69,7 +65,7 @@ In order to give ArgoCD access to this repo, you need to:
 
 ```sh
 # Deploy sandbox
-./setup.sh
+./run.sh
 
 # Get ArgoCD password
 ./pwd.sh
@@ -79,13 +75,13 @@ In order to give ArgoCD access to this repo, you need to:
 kubectl port-forward --context cluster-prod svc/argocd-server -n argocd 8080:443
 ```
 
-## Setup
+## Run
 
-To deploy the sandbox, make sure all the requirements are met and run [setup.sh](https://atc-github.azure.cloud.bmw/Extended-Enterprise-Catena-X/dsf-argo-sandbox/blob/master/setup.sh)
+To deploy the sandbox, make sure all the requirements are met and run `run.sh`
 
 ### Contexts
 
-The [contexts.txt](https://atc-github.azure.cloud.bmw/Extended-Enterprise-Catena-X/dsf-argo-sandbox/blob/master/contexts.txt) file is used to define the contexts/clusters to be created by `setup.sh`
+The ***contexts.txt***  file is used to define the contexts/clusters to be created by `run.sh`
 
 ### Diagram
 
@@ -108,7 +104,7 @@ flowchart TD
 
 ### Initial Admin Password
 
-To get the initial admin password you can run [pwd.sh](https://atc-github.azure.cloud.bmw/Extended-Enterprise-Catena-X/dsf-argo-sandbox/blob/master/pwd.sh)
+To get the initial admin password you can run `pwd.sh`
 
 ```sh
 ❯ ./pwd.sh
@@ -231,7 +227,7 @@ resources:
 
 ### ArgoCD App Templating
 
-As an example for an application that needs to be deployed multiple times with different names/values, an  ApplicationSet named [edc.yaml](https://atc-github.azure.cloud.bmw/Extended-Enterprise-Catena-X/dsf-argo-sandbox/blob/master/app-of-apps/argocd/clusters/cluster-prod/edc.yaml) was created, for each environment.
+As an example for an application that needs to be deployed multiple times with different names/values, an  ApplicationSet named `edc.yaml`  was created, for each environment.
 
 > [!NOTE]
 > This simulates different ***use-cases*** being deployed using the same codebase
@@ -308,7 +304,7 @@ k9s --context cluster-prod
 
 ## Remove
 
-In order to remove all local clusters created you can run [remove.sh](https://atc-github.azure.cloud.bmw/Extended-Enterprise-Catena-X/dsf-argo-sandbox/blob/master/remove.sh)
+In order to remove all local clusters created you can run `remove.sh`
 
 ## References
 

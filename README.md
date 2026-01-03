@@ -1,4 +1,4 @@
-# ArgoCD Sandbox
+# K8s ArgoCD Sandbox
 
 This repository is a **template repository**, that allows for quick setup of a private repo that is meant to be used by ArgoCD as a **source of truth** for applications. It comes packaged with scripts that quickly bootstraps local k8s clusters and deploys ArgoCD in them, pointing to the new repository generated through this.
 

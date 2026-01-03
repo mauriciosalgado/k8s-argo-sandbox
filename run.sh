@@ -62,6 +62,12 @@ for ctx in $CONTEXTS; do
     --for=condition=Available=True \
     --timeout=300s
 
+  echo "Waiting for ArgoCD repo-server to be ready"
+  kubectl wait deployment argocd-repo-server \
+    -n argocd \
+    --for=condition=Available=True \
+    --timeout=300s
+
   echo "Bootstrapping ArgoCD Root Application in $ctx"
   export CLUSTER_ENV="$ctx"
   envsubst <$BOOTSTRAP_TEMPLATE | kubectl apply -f -

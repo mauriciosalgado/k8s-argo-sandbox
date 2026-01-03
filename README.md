@@ -297,14 +297,16 @@ alias kuc='kubectl config use-context'
 
 ### Check with k9s
 
-If you don't have k9s you can install it with `brew install k9s`
-
 If you want to check more than one context at the same time:
 
 ```sh
 k9s --context cluster-dev
 k9s --context cluster-prod
 ```
+
+If you don't have k9s:
+
+- [k9s-install](https://k9scli.io/topics/install/)
 
 ## Remove
 

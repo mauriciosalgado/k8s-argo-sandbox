@@ -244,7 +244,7 @@ generators:
       repoURL: ${REPO_URL}
       revision: main
       files:
-        - path: app-of-apps/apps/edc/cluster-dev/*.yaml
+        - path: app-of-apps/apps/edc/cluster-dev/*/*.yaml
 ```
 
 And then you can use the same logic as for the single helm application, in the sources section of the template:
@@ -258,7 +258,7 @@ template:
       helm:
         releaseName: "{{path.filename}}"
         valueFiles:
-          - $path/app-of-apps/apps/edc/{{path.basename}}/{{path.filename}}
+          - $path/app-of-apps/apps/edc/cluster-prod/{{path.basename}}/{{path.filename}}
     - repoURL: ${REPO_URL}
       targetRevision: main
       ref: path
@@ -276,12 +276,14 @@ resources:
   - edc.yaml  <-
 ```
 
-This will create an ArgoCD Application for every values file found in `app-of-apps/apps/edc/cluster-prod`, deploying a release with the name of the file.
+This will create an ArgoCD Application for every values file found in `app-of-apps/apps/edc/cluster-prod/*/*.yaml`, deploying a release with the name of the file.
 
 ```sh
 apps/edc/cluster-prod/
-├── bblocks-nginx.yaml
-└── dsf-nginx.yaml
+├── bblocks-edc
+│   └── bblocks-edc.yaml
+└── dsf-edc
+    └── dsf-edc.yaml
 ```
 
 ## Tips

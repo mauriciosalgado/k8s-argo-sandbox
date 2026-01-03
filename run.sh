@@ -9,7 +9,14 @@ BOOTSTRAP_TEMPLATE="app-of-apps/argocd/bootstrap/root-app-template.yaml"
 SSH_KEY="$HOME/.ssh/argocd-ssh"
 SSH_KNOWN_HOSTS=$(ssh-keyscan "$GIT_HOST" 2>/dev/null)
 
-# CHECKS
+# DEPENDENCY CHECKS
+
+for bin in git minikube kubectl ssh-keyscan; do
+  if ! command -v "$bin" >/dev/null 2>&1; then
+    echo "Error: required command '$bin' is not installed or not in PATH"
+    exit 1
+  fi
+done
 
 if [[ ! -f "$SSH_KEY" ]]; then
   echo "SSH key \"argocd-ssh\" not found: $SSH_KEY"

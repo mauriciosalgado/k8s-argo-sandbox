@@ -276,7 +276,7 @@ resources:
   - edc.yaml  <-
 ```
 
-This will create an ArgoCD Application for every values file found in `app-of-apps/apps/edc/cluster-prod/*/*.yaml`, deploying a release with the name of the file.
+This will create an ArgoCD Application for every values file found in `app-of-apps/apps/edc/cluster-prod/*/*.yaml`, deploying a release with the name of the directory.
 
 ```sh
 apps/edc/cluster-prod/

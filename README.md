@@ -1,6 +1,6 @@
 # ArgoCD Sandbox
 
-This repository allows for quick setup of local kubernetes clusters and configuration of ArgoCD to use the app-of-apps GitOps approach.
+This repository is a **template repository**, that allows for quick setup of a private repo that is meant to be used by ArgoCD as a source of truth for applications to be deployed and to allow for quick deployment in local kubernetes clusters.
 
 > [!IMPORTANT]
 > cluster = context = environment

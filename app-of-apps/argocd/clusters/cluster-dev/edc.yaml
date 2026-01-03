@@ -9,11 +9,11 @@ spec:
         repoURL: ${REPO_URL}
         revision: main
         files:
-          - path: app-of-apps/apps/edc/cluster-dev/*.yaml
+          - path: app-of-apps/apps/edc/cluster-dev/*/*.yaml
 
   template:
     metadata:
-      name: edc-appset-helm-{{path.filename}}
+      name: edc-appset-helm-{{path.basename}}
     spec:
       project: default
 
@@ -24,7 +24,7 @@ spec:
           helm:
             releaseName: "{{path.filename}}"
             valueFiles:
-              - $path/app-of-apps/apps/edc/{{path.basename}}/{{path.filename}}
+              - $path/app-of-apps/apps/edc/cluster-dev/{{path.basename}}/{{path.filename}}
         - repoURL: ${REPO_URL}
           targetRevision: main
           ref: path

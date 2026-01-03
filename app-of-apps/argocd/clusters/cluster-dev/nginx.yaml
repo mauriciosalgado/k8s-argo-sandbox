@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: <REPO_URL>
-    targetRevision: master
+    targetRevision: main
     path: app-of-apps/apps/nginx/overlays/cluster-dev
   destination:
     server: https://kubernetes.default.svc

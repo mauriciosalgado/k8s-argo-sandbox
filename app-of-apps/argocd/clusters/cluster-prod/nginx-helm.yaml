@@ -13,7 +13,7 @@ spec:
         valueFiles:
           - $path/app-of-apps/apps/nginx-helm/values/cluster-prod.yaml
     - repoURL: ${REPO_URL}
-      targetRevision: master
+      targetRevision: main
       ref: path
   destination:
     server: https://kubernetes.default.svc

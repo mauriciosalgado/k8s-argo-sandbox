@@ -56,6 +56,6 @@ for ctx in $CONTEXTS; do
     --timeout=300s
 
   echo "Bootstrapping ArgoCD Root Application in $ctx"
-  CLUSTER_ENV="$ctx"
+  export CLUSTER_ENV="$ctx"
   envsubst <$BOOTSTRAP_TEMPLATE | kubectl apply -f -
 done

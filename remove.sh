@@ -1,4 +1,7 @@
-CONTEXTS=$(cat "contexts.txt")
+#!/bin/bash
+set -euo pipefail
+
+CONTEXTS=$(<"contexts.txt")
 
 for ctx in $CONTEXTS; do
   minikube --profile $ctx delete

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -euo pipefail
 
 CONTEXTS=$(<"contexts.txt")
 REPO_URL=$(git remote get-url origin)

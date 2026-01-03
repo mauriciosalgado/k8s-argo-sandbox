@@ -256,7 +256,7 @@ template:
       chart: nginx
       targetRevision: 22.3.8
       helm:
-        releaseName: "{{path.filename}}"
+        releaseName: "{{path.basename}}"
         valueFiles:
           - $path/app-of-apps/apps/edc/cluster-prod/{{path.basename}}/{{path.filename}}
     - repoURL: ${REPO_URL}

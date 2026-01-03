@@ -310,6 +310,9 @@ k9s --context cluster-prod
 
 In order to remove all local clusters created you can run `remove.sh`
 
+> [!NOTE]
+> This does not remove `.minikube` or the docker images pulled by minikube
+
 ## References
 
 - [ArgoCD Application Docs](https://argo-cd.readthedocs.io/en/latest/user-guide/application-specification/)

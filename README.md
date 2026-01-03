@@ -44,6 +44,9 @@ This repository is intended to be used as a **template repository**.
 
 The setup script will inject the repoURL in the manifests and push the changes to the repo
 
+> [!NOTE]
+> After running `setup.sh` you can delete it, although it's idempotent
+
 ## Requirements
 
 ### Packages

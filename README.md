@@ -247,7 +247,7 @@ generators:
       repoURL: ${REPO_URL}
       revision: main
       files:
-        - path: app-of-apps/apps/edc/cluster-dev/*/*.yaml
+        - path: app-of-apps/apps/edc/cluster-prod/*/*.yaml
 ```
 
 And then you can use the same logic as for the single helm application, in the sources section of the template:

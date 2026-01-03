@@ -283,10 +283,10 @@ This will create an ArgoCD Application for every values file found in `app-of-ap
 
 ```sh
 apps/edc/cluster-prod/
-├── bblocks-edc
-│   └── bblocks-edc.yaml
-└── dsf-edc
-    └── dsf-edc.yaml
+├── alpha-edc
+│   └── alpha-edc.yaml
+└── beta-edc
+    └── beta-edc.yaml
 ```
 
 ## Tips

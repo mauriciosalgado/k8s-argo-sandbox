@@ -38,7 +38,7 @@ This repository is a **template repository**, that allows for quick setup of a p
 This repository is intended to be used as a **template repository**.
 
 1. Click **Use this template**
-2. Create a new private repository
+2. Create a new **private** repository
 3. Clone your new repository
 4. Run `./setup.sh`
 
@@ -133,7 +133,7 @@ kubectl port-forward --context cluster-prod svc/argocd-server -n argocd 8081:443
 
 ## Adding Apps
 
-This repository serves as a way to explore different patterns to deploy applications using ArgoCD, depending on the needs.
+This repository serves as a way to explore different patterns to deploy applications using ***ArgoCD and ***GitOps***, depending on the needs.
 
 ### YAML Based Apps
 

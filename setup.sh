@@ -32,6 +32,6 @@ done
 
 git add app-of-apps
 
-git commit -m "Bootstrap: configure repository URL"
+git commit -m "BOOTSTRAP: configure repository URL"
 git push origin HEAD
 echo "Changes commited"

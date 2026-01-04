@@ -221,7 +221,7 @@ sources:
 > [!NOTE]
 > Without multiple sources, it can't load our custom valuesFile because it will look for it in the chart repo
 
-And finally add the ApplicationSet to ***kustomization.yaml*** under the environment in which we are deploying the app, so that ArgoCD can discover it:
+And finally add the Application to ***kustomization.yaml*** under the environment in which we are deploying the app, so that ArgoCD can discover it:
 
 ```yaml
 apiVersion: kustomize.config.k8s.io/v1beta1

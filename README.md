@@ -133,7 +133,7 @@ kubectl port-forward --context cluster-prod svc/argocd-server -n argocd 8081:443
 
 ## Adding Apps
 
-This repository serves as a way to explore different patterns to deploy applications using ***ArgoCD and ***GitOps***, depending on the needs.
+This repository serves as a way to explore different patterns to deploy applications using ***ArgoCD*** and ***GitOps***, depending on the needs.
 
 ### YAML Based Apps
 

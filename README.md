@@ -106,6 +106,9 @@ flowchart TD
 
 ## Access ArgoCD UI
 
+> [!NOTE]
+> username: admin
+
 ### Initial Admin Password
 
 To get the initial admin password you can run `pwd.sh`

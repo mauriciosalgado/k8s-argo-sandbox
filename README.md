@@ -328,3 +328,4 @@ In order to remove all local clusters created you can run `remove.sh`
 - [ArgoCD Helm](https://argo-cd.readthedocs.io/en/release-2.7/user-guide/helm/)
 - [Helm value files from external Git repository](https://argo-cd.readthedocs.io/en/release-2.7/user-guide/multiple_sources/#helm-value-files-from-external-git-repository)
 - [ArgoCD AppSet Git Generator](https://argo-cd.readthedocs.io/en/latest/operator-manual/applicationset/Generators-Git/)
+- [ArgoCD ConfigMap](https://argo-cd.readthedocs.io/en/stable/operator-manual/argocd-cm-yaml/)

@@ -9,7 +9,7 @@ spec:
         repoURL: ${REPO_URL}
         revision: main
         files:
-          - path: app-of-apps/apps/edc/cluster-dev/*/*.yaml
+          - path: app-of-apps/apps/edc/cluster-dev/*/values.yaml
 
   template:
     metadata:
@@ -22,7 +22,7 @@ spec:
           chart: nginx
           targetRevision: 22.3.8
           helm:
-            releaseName: "{{path.filename}}"
+            releaseName: "{{path.basename}}"
             valueFiles:
               - $path/app-of-apps/apps/edc/cluster-dev/{{path.basename}}/{{path.filename}}
         - repoURL: ${REPO_URL}

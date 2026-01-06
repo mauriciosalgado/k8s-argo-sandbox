@@ -9,7 +9,7 @@ spec:
         repoURL: ${REPO_URL}
         revision: main
         files:
-          - path: app-of-apps/apps/edc/cluster-prod/*/*.yaml
+          - path: app-of-apps/apps/edc/cluster-prod/*/values.yaml
 
   template:
     metadata:

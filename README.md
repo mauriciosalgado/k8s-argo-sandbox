@@ -249,7 +249,7 @@ generators:
       repoURL: ${REPO_URL}
       revision: main
       files:
-        - path: app-of-apps/apps/edc/cluster-prod/*/*.yaml
+        - path: app-of-apps/apps/edc/cluster-prod/*/values.yaml
 ```
 
 And then you can use the same logic as for the single helm application, in the sources section of the template:
@@ -286,9 +286,9 @@ This will create an ArgoCD Application for every values file found in `app-of-ap
 ```sh
 apps/edc/cluster-prod/
 ├── alpha-edc
-│   └── alpha-edc.yaml
+│   └── values.yaml
 └── beta-edc
-    └── beta-edc.yaml
+    └── values.yaml
 ```
 
 ## Tips
